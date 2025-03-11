@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumar números</title>
+</head>
+<body>
+    {% include 'informacion/menu.html' %}
+    <h1>Sumar números</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Número 1</label>
+        <input type="number" name="cajanumero1" required/>
+        <label>Número2</label>
+        <input type="number" name="cajanumero2" required/>
+        <button>
+            Sumar números
+        </button>
+    </form>
+    {% if suma %}
+        <h1> 
+            {{numero1}} + {{numero2}} = {{suma}} 
+        </h1>
+    {% endif %}
+</body>
+</html>

@@ -4,35 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/table.css'%}"
-    <title></title>
+    <title>Jugadores</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/table.css'%}">
 </head>
 <body>
-    <hr/>
     {% include 'informacion/menu.html' %}
-    <hr/>
     <h1>Jugadores</h1>
-    <table border="1">
+    <!-- Recorremos todos los números que recibimos -->
+    <!-- Mostrar los valores sin más
+    {% for valor in numeros %}
+    <h2>Valor {{valor}}</h2>
+    {% endfor %}
+    <h1></h1>
+    <h1></h1>
+    -->
+    <!-- Mostrar los valores en una lista
+    {% for valor in numeros %}
+    <ul>
+        <li>Elemento {{valor}}</li>
+    </ul>
+    {% endfor %}
+    <h1></h1>
+    <h1></h1>
+    -->
+    <!-- Mostrar los valores en una tabla -->
+    <table>
         <tr>
-            <th>DATO</th>
-            <th>VALOR</th>
+            <th>NOMBRE     </th>
+            <th>DEMARCACIÓN</th>
+            <th>CAMISETA   </th>
         </tr>
+        {% for jugador in jugadores  %}
         <tr>
-            <td>Num</td>
-            <td>5</td>
+            <td>{{jugador.Nombre}}</td>
+            <td>{{jugador.Demarcacion}}</td>
+            <td>{{jugador.Numero}}</td>
         </tr>
-        <tr>
-            <td>Num</td>
-            <td>7</td>
-        </tr>
-        <tr>
-            <td>Num</td>
-            <td>22</td>
-        </tr>
-        <tr>
-            <td>Num</td>
-            <td>45</td>
-        </tr>
+        {% endfor %}
     </table>
 </body>
 </html>

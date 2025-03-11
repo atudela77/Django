@@ -1,4 +1,21 @@
 table, th, td {
-    border: 1px solid;
     text-align: center;
   }
+
+table {
+  width: 25%;
+}
+th, td {
+  padding: 6px;
+  text-align: center;
+}
+th {
+  background-color: #284e5f;
+  color: white;
+}
+th, td {
+  border-bottom: 1px solid #ddd;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+tr:hover {background-color: coral;}

@@ -1,0 +1,13 @@
+h1 {
+    color: fuchsia
+}
+
+img {
+    width: 400px;
+    height: 400px;    
+}
+ul {
+    color: blue;
+    font-style: italic;
+    font-weight:bold;
+}

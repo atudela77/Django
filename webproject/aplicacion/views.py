@@ -14,3 +14,7 @@ def viernes(request):
 
 def listas(request):
     return render(request, 'aplicacion/listas.html')
+
+
+def peliculas(request):
+    return render(request, 'aplicacion/peliculas.html')

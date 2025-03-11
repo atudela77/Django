@@ -1,15 +1,15 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pelis.css'%}"/>  
     <title>Página de inicio App</title>
 </head>
 <body>
+    {% include 'aplicacion/menu.html' %}
     <a href="https://es.wikipedia.org/wiki/Python">Python en wikipedia</a>
-    <a href="viernes/">Ir a viernes</a>
-    <a href="listas/">Ir a listas</a>
-    <a href="#">Home</a>
     <h1>Mi primera página Django con HTML</h1>
     <h3>Título con tamaño 3</h3>
     <h6>Texto, supuestamente, con tamaño pequeño</h6>

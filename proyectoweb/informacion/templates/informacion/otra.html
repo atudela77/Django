@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de multiplicar</title>
+</head>
+<body>
+    {% include 'informacion/menu.html' %}
+    <h1>
+        Tabla de multiplicar
+    </h1>
+    <table border="1">
+        <tr>
+            <td colspan="2">
+                <form method="post">
+                    {% csrf_token %}
+                    <Label>Introduzca un número: </Label>
+                    <input type="numero" name="caja"/>
+                    <button>Mostrar</button>
+                </form>
+            </td>
+        </tr>
+ <!--   <br/><br/><br/>
+    <table border="1"> -->
+        {% if t1 %}  
+        <tr>
+            <th colspan="2" style ="background-color: rgb(115, 150, 147); color: white"> TABLA DE MULTIPLICAR DEL {{n}}</th>
+        </tr>
+        <tr>
+            <th align="center" style ="background-color: rgb(135, 202, 178)">OPERACIÓN</th>
+            <th align="center" style ="background-color: rgb(135, 202, 178)">RESULTADO</th>
+        </tr>
+        {% for op, res in t1 %}
+            <tr>
+                <td align="center">{{op}}</td>
+                <td align="center">{{res}}</td>
+            </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+</body>
+</html>

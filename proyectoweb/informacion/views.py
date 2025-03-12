@@ -91,3 +91,54 @@ def sumarnumeros(request):
         return render(request, 'informacion/sumarnumeros.html', context)
     else:
         return render(request, 'informacion/sumarnumeros.html')
+
+
+def collatz(request):
+    if ('cajanumero' in request.POST):
+        numero = int(request.POST['cajanumero'])
+        listanumeros = []
+        while numero != 1:
+            if numero % 2 == 0:
+                numero = numero / 2
+            else:
+                numero = (numero * 3) + 1
+            listanumeros.append(int(numero))
+        context = {
+            "numeroscollatz": listanumeros
+        }
+        return render(request, 'informacion/collatz.html', context)
+    else:
+        return render(request, 'informacion/collatz.html')
+
+
+# def tablaMultiplicar(request):
+#     if('cajanumero' in request.POST):
+#         num = int(request.POST['cajanumero'])
+#         lista_tabla = []
+#         for i in range(10):
+#             res = (i + 1) * num
+#             lista_tabla.append(res)
+#         context = {
+#             "tablaMult": lista_tabla
+#         }
+#         return render(request, 'informacion/tabla.html', context)
+#     else:
+#         return render(request, 'informacion/tabla.html')
+
+
+def otra(request):
+    if ('caja' in request.POST):
+        numero = int(request.POST['caja'])
+        lista_tabla = []
+        for i in range(10):
+            operacion = f"{numero} x {i + 1}"
+            resultado = (i + 1) * numero
+            tupla = (operacion, resultado)
+            lista_tabla.append(tupla)
+        context = {
+            "t1": lista_tabla,
+            "n": numero
+        }
+        return render(request, 'informacion/otra.html', context)
+    else:
+        return render(request, 'informacion/otra.html')

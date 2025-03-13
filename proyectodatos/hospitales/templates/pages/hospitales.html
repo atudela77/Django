@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Proyecto datos</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}"/>
+</head>
+<body>
+    {% include 'pages/menu.html' %}
+    <h1>Hospitales Oracle</h1>
+    <table>
+        <tr>
+            <th colspan="5">HOSPITALES</th>
+        </tr>
+        <tr>
+            <th>CÓDIGO</th>
+            <th>NOMBRE</th>
+            <th>DIRECCIÓN</th>
+            <th>TELÉFONO</th>
+            <th>Nº CAMAS</th>
+        </tr>
+        {% for h in hospitales%}
+        <tr>
+            <td>{{ h.codigo }}</td>
+            <td>{{ h.nombre }}</td>
+            <td>{{ h.direccion }}</td>
+            <td>{{ h.telefono }}</td>
+            <td>{{ h.numero_camas }}</td>
+        </tr>
+        {% endfor %}
+    </table>   
+</body>
+</html>

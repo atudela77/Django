@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+}
+table {
+    border: 2px solid;
+    text-align: center;
+    width: 40%;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+th {
+    border: 1px solid;
+    text-align: center;
+    background-color: rgb(112, 113, 119);
+    color: whitesmoke;
+    font-family: sans-serif;
+}
+td {
+    border: 1px solid;
+    text-align: center;
+    background-color: rgb(220, 225, 227);
+    font-family: sans-serif;
+}

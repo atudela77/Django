@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}"/>
+    <title>Proyecto datos</title>
+</head>
+<body>
+    {% include 'pages/menu.html' %}
+    <h1>Insertar departamento</h1>
+    <form method="post">
+        {% csrf_token %}
+    <table>
+        <tr>
+            <th>
+                <label>Id departamento</label>
+                <input type="number" name="cajanum" required/>
+                <label>Nombre</label>
+                <input type="text" name="cajanom"/>
+                <label>Localidad</label>
+                <input type="text" name="cajaloc"/>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <button>Insertar departamento</button>
+            </td>
+        </tr>
+    </table>
+    </form>
+    <h1>{{ mensaje }}</h1>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}"/>
+    <title>Proyecto datos</title>
+</head>
+<body>
+    {% include 'pages/menu.html' %}
+    <h1>Eliminar departamento</h1>
+    <table>
+        <form method="post">
+            {% csrf_token %}
+            <tr>
+                <th>
+                    <label>Número de departameno</label>
+                    <input type="number" name="cajanum"/>
+                    <button>Eliminar departamento</button>
+                </th>
+            </tr>
+        </form>
+        <tr>
+        {% if mensaje != "" %}
+            <td>{{ mensaje }}</td>
+        {% endif %}
+        </tr>
+
+    </table>
+</body>
+</html>

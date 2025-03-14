@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}"/>
+    <title>Proyecto datos</title>
+</head>
+<body>
+    {% include 'pages/menu.html' %}
+    <h1>Detalles departamento</h1>
+    <!--
+    <p>
+        <a href="/detallesdepartamento?id=10">Detalles 10</a>
+    </p>
+    <p>
+        <a href="/detallesdepartamento?id=20">Detalles 20</a>
+    </p>
+    <p>
+        <a href="/detallesdepartamento?id=30">Detalles 30</a>
+    </p>
+    <hr/>
+    -->
+    <table>
+        <tr>
+            <th colspan="3">DEPARTAMENTO</th>
+        </tr>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>LOCALIDAD</th>
+        </tr>
+        {% if departamento %}
+        <tr>
+            <td>{{ departamento.numero }}</td>
+            <td>{{ departamento.nombre }}</td>
+            <td>{{ departamento.localidad }}</td>
+        </tr>
+        {% else %}
+        <tr style="height: 22px;">
+            <td> </td>
+            <td> </td>
+            <td> </td>
+        </tr>
+        {% endif %}       
+    </table>
+</body>
+</html>

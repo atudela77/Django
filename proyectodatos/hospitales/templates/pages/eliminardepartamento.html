@@ -16,17 +16,20 @@
             <tr>
                 <th>
                     <label>Número de departameno</label>
-                    <input type="number" name="cajanum"/>
+                    <input type="number" name="cajanum" value="{{num}}">
                     <button>Eliminar departamento</button>
                 </th>
             </tr>
         </form>
+        {% if mensaje %}
         <tr>
-        {% if mensaje != "" %}
             <td>{{ mensaje }}</td>
-        {% endif %}
         </tr>
-
+        {% else %}
+        <tr style="height: 22px;">
+            <td></td>
+        </tr>
+        {% endif %}
     </table>
 </body>
 </html>

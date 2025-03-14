@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}"/>
+    <title>Proyecto datos</title>
+</head>
+<body>
+    {% include 'pages/menu.html' %}
+    <h1>Departamentos Oracle</h1>
+    <table>
+        <tr>
+            <th colspan="4">DEPARTAMENTOS</th>
+        </tr>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>LOCALIDAD</th>
+            <th> </th>
+        </tr>
+        {% for d in departamentos %}
+        <tr>
+            {% if numerodept == d.numero %}
+            <td style="background-color: aquamarine;">{{ d.numero }}</td>
+            <td style="background-color: aquamarine;">{{ d.nombre }}</td>
+            <td style="background-color: aquamarine;">{{ d.localidad }}</td>
+            {% else %}
+            <td>{{ d.numero }}</td>
+            <td>{{ d.nombre }}</td>
+            <td>{{ d.localidad }}</td>
+            <td width="2px">
+                <form method="post">
+                    {% csrf_token %}
+                    <button>X</button>
+                </form>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

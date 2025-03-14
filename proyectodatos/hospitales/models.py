@@ -64,6 +64,36 @@ class ServiceDepartamentos:
         cursor.close()
         return eliminado
 
+    def modificarDepartamento(self, numero, nombre, localizacion):
+        sql = '''
+            update dept
+               set dnombre = :p1,
+                   loc = :p2
+            where dept_no = :p3
+        '''
+        cursor = self.conn.cursor()
+        cursor.execute(sql, (nombre, localizacion, numero))
+        actualizado = cursor.rowcount
+        self.conn.commit()
+        cursor.close()
+        return actualizado
+
+    def detallesDepartamento(self, numero):
+        sql = '''
+            select dept_no, dnombre, loc
+            from dept
+            where dept_no = :p1
+        '''
+        cursor = self.conn.cursor()
+        cursor.execute(sql, (numero,))
+        num, nom, loc = cursor.fetchone()
+        dept = Departamento()
+        dept.numero = num
+        dept.nombre = nom
+        dept.localidad = loc
+        cursor.close()
+        return dept
+
 
 class Hospital:
     codigo = 0
@@ -98,5 +128,40 @@ class ServiceHospital:
             hosp.telefono = tel
             hosp.numero_camas = cam
             lista.append(hosp)
+        cursor.close()
+        return lista
+
+
+class Empleado:
+    apellido = ""
+    oficio = ""
+    salario = ""
+    depto = 0
+
+
+class serviceEmpleados():
+    def __init__(self):
+        self.conn = oracledb.connect(
+            user="system",
+            password="oracle",
+            dsn="localhost:1521/xe"
+        )
+
+    def empleadosDepartamento(self, numdept):
+        sql = '''
+            select apellido, oficio, salario, dept_no
+            from emp
+            where dept_no = :p1
+        '''
+        cursor = self.conn.cursor()
+        cursor.execute(sql, (numdept,))
+        lista = []
+        for ape, ofi, sal, dep in cursor:
+            empleado = Empleado()
+            empleado.apellido = ape.title()
+            empleado.oficio = ofi.title()
+            empleado.salario = f"{sal:,.2f}€"
+            empleado.depto = dep
+            lista.append(empleado)
         cursor.close()
         return lista

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}"/>
+    <title>Proyecto datos</title>
+</head>
+<body>
+    {% include 'pages/menu.html' %}
+    <h1>Modificar departamento</h1>    
+    <form method="post">
+        {% csrf_token %}
+    <table>
+        <tr>
+            <th>
+                <label>Id departamento</label>
+                <input type="number" name="cajanum" value="{{departamento.numero}}" required/>
+                <label>Nombre</label>
+                <input type="text" name="cajanom" value="{{departamento.nombre}}"/>
+                <label>Localidad</label>
+                <input type="text" name="cajaloc" value="{{departamento.localidad}}"/>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <button>Modificar departamento</button>
+            </td>
+        </tr>
+    </table>
+    </form>
+    <h1>{{ mensaje }}</h1>
+</body>
+</html>

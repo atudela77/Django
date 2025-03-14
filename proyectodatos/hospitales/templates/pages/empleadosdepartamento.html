@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}"/>
+    <title>Proyecto datos</title>
+</head>
+<body>
+    {% include 'pages/menu.html' %}
+    <h1>Empleados por departamento</h1>
+    <table>
+        <tr>
+            <th colspan="4">
+                <form method="post">
+                    {% csrf_token %}
+                    <label>Número de departamento</label>
+                    <input type="number" name="cajanum">
+                    <button>Consultar</button>
+                </form>
+            </th>
+        </tr>
+        {% if numdept and empleados %}
+        <tr>
+            <th colspan="4" style="height: 3px; background-color: white;border: 2px solid;"></th>
+        </tr>
+        <tr>
+            <th colspan="4">EMPLEADOS DEL DEPARTAMENTO {{numdept}}</th>
+        </tr>
+        <tr>
+            <th>APELLIDO</th>
+            <th>OFICIO</th>
+            <th>SALARIO</th>
+            <th>DEPARTAMENTO</th>
+        </tr>
+        {% for e in empleados %}
+        <tr>
+            <td>{{ e.apellido }}</td>
+            <td>{{ e.oficio }}</td>
+            <td>{{ e.salario }}</td>
+            <td>{{ e.depto }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+            {% if numdept %}
+            <tr colspan="4">
+                <td>
+                    O el departamento no existe, o no tiene empleados asignados.
+                </td>
+            </tr>
+            {% endif %}
+        {% endif %}
+    </table>
+</body>
+</html>

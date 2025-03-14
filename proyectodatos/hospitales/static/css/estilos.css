@@ -21,3 +21,17 @@ td {
     background-color: rgb(220, 225, 227);
     font-family: sans-serif;
 }
+href {
+    text-align: center;
+    width: 40%;
+    margin: 0 auto;
+    font-family: sans-serif;
+    color: green;
+}
+p {
+    text-align: center;
+    width: 40%;
+    margin: 0 auto;
+    font-family: sans-serif;
+    color: green;
+}

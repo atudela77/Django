@@ -12,12 +12,13 @@
     <h1>Departamentos Oracle</h1>
     <table>
         <tr>
-            <th colspan="3">DEPARTAMENTOS</th>
+            <th colspan="6">DEPARTAMENTOS</th>
         </tr>
         <tr>
             <th>ID</th>
             <th>NOMBRE</th>
             <th>LOCALIDAD</th>
+            <th colspan="3">Opciones</th>
         </tr>
         {% for d in departamentos %}
         <tr>
@@ -25,10 +26,28 @@
             <td style="background-color: aquamarine;">{{ d.numero }}</td>
             <td style="background-color: aquamarine;">{{ d.nombre }}</td>
             <td style="background-color: aquamarine;">{{ d.localidad }}</td>
+            <td style="width: 65px; background-color: aquamarine;">
+                <a href="/detallesdepartamento?id={{d.numero}}"" style="color: black"">Detalles</a>
+            </td>
+            <td style="width: 65px; background-color: aquamarine;">
+                <a href="/eliminardepartamento?id={{d.numero}}"" style="color: black"">Eliminar</a>
+            </td>
+            <td style="width: 65px; background-color: aquamarine;">
+                <a href="/modificardepartamento?id={{d.numero}}" style="color: black"">Modificar</a>
+            </td>
             {% else %}
             <td>{{ d.numero }}</td>
             <td>{{ d.nombre }}</td>
             <td>{{ d.localidad }}</td>
+            <td style="width: 65px; background-color: rgb(82, 83, 77);">
+                <a href="/detallesdepartamento?id={{d.numero}}" style="color: white">Detalles</a>
+            </td>
+            <td style="width: 65px; background-color: rgb(82, 83, 77);">
+                <a href="/eliminardepartamento?id={{d.numero}}" style="color: white">Eliminar</a>
+            </td>
+            <td style="width: 65px; background-color: rgb(82, 83, 77);">
+                <a href="/modificardepartamento?id={{d.numero}}" style="color: white">Modificar</a>
+            </td>
             {% endif %}
         </tr>
         {% endfor %}

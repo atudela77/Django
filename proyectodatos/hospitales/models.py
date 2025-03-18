@@ -165,3 +165,21 @@ class serviceEmpleados():
             lista.append(empleado)
         cursor.close()
         return lista
+
+    def getEmpleados(self):
+        sql = '''
+            select apellido, oficio, salario, dept_no
+            from emp
+        '''
+        cursor = self.conn.cursor()
+        cursor.execute(sql)
+        lista = []
+        for ape, ofi, sal, dep in cursor:
+            empleado = Empleado()
+            empleado.apellido = ape.title()
+            empleado.oficio = ofi.title()
+            empleado.salario = f"{sal:,.2f}€"
+            empleado.depto = dep
+            lista.append(empleado)
+        cursor.close()
+        return lista

@@ -165,7 +165,7 @@ def detallesDepartamento(request):
         return render(request, 'pages/detallesdepartamento.html')
 
 
-def empleadosdepartamento(request):
+def empleadosdepartamento_v1(request):
     servicio = serviceEmpleados()
     if 'cajanum' in request.POST:
         numdept = request.POST['cajanum']
@@ -177,3 +177,25 @@ def empleadosdepartamento(request):
         return render(request, 'pages/empleadosdepartamento.html', context)
     else:
         return render(request, 'pages/empleadosdepartamento.html')
+
+
+def empleadosdepartamento(request):
+    servicio = serviceEmpleados()
+    servicioDept = ServiceDepartamentos()
+    departamentos = servicioDept.getDepartamentos()
+    if 'cajanum' in request.POST:
+        numdept = request.POST['cajanum']
+        empleados = servicio.empleadosDepartamento(numdept)
+        context = {
+            "numdept": numdept,
+            "empleados": empleados,
+            "departamentos": departamentos
+        }
+        return render(request, 'pages/empleadosdepartamento.html', context)
+    else:
+        empleados = servicio.getEmpleados()
+        context = {
+            "empleados": empleados,
+            "departamentos": departamentos
+        }
+        return render(request, 'pages/empleadosdepartamento.html', context)

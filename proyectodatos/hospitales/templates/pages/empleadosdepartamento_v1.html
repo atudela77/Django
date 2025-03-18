@@ -16,17 +16,12 @@
                 <form method="post">
                     {% csrf_token %}
                     <label>Número de departamento</label>
-<!--                <input type="number" name="cajanum">-->
-                    <select name="cajanum">
-                        {% for d in departamentos %}
-                        <option value="{{d.numero}}">{{d.nombre}}</option>
-                        {% endfor %}
-                    </select>
+                    <input type="number" name="cajanum">
                     <button>Consultar</button>
                 </form>
             </th>
         </tr>
-        <!--{% if numdept and empleados %}-->
+        {% if numdept and empleados %}
         <tr>
             <th colspan="4" style="height: 3px; background-color: white;border: 2px solid;"></th>
         </tr>
@@ -47,15 +42,15 @@
             <td>{{ e.depto }}</td>
         </tr>
         {% endfor %}
-    <!--   {% else %}
+        {% else %}
             {% if numdept %}
             <tr colspan="4">
                 <td>
                     O el departamento no existe, o no tiene empleados asignados.
                 </td>
             </tr>
-            {% endif %}-->
-       <!-- {% endif %}-->
+            {% endif %}
+        {% endif %}
     </table>
 </body>
-</html>   
+</html>

@@ -16,19 +16,18 @@
                 <th>Número</th>
                 <th>Nombre</th>
                 <th>Localidad</th>
-                <!--<th></th>-->
-                <th></th>
+                <th colspan="2"></th>
             </tr>
             {% for d in departamentos %}
             <tr>
-                <td>{{d.numero}}</td>
+                <td style="width: 10px;">{{d.numero}}</td>
                 <td>{{d.nombre}}</td>
                 <td>{{d.localidad}}</td>
-                <!--<td>
-                    <a href="/update?id={{d.numero}}" class="btn btn-danger">
+                <td style="width: 40px;">
+                    <a href="/update?id={{d.numero}}" class="btn btn-primary">
                     Update
-                </td>-->
-                <td>
+                </td>
+                <td  style="width: 40px;">
                     <a href="/delete?id={{d.numero}}" class="btn btn-danger">
                     Delete
                 </td>
